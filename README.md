@@ -1,7 +1,7 @@
-hibernate
+Spring JDBC Template
 =========
 
-Usage Spring JdbcTemplateb (SqlParameterSource, KeyHolder, SqlUpdate, NamedParameterJdbcTemplate(dataSource),  JdbcTemplate(dataSource), DataSource)
+Usage Spring JdbcTemplate (SqlParameterSource, KeyHolder, SqlUpdate, NamedParameterJdbcTemplate(dataSource),  JdbcTemplate(dataSource), DataSource)
 
 Entity:
 * <b>Service</b>
