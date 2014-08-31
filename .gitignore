@@ -1,0 +1,19 @@
+#Ignore Eclipse project files
+
+.metadata
+.settings
+.project
+.classpath
+.iml
+
+/test-output
+
+/*.class
+/target
+/.settings
+/.project
+/.classpath
+/.metadata
+/*.log
+/logs/
+/bin

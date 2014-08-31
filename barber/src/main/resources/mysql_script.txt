@@ -1,0 +1,58 @@
+///employee and service
+
+CREATE TABLE `storage`.`employee` (`employee_id` INT NOT NULL AUTO_INCREMENT,  `e_name` VARCHAR(100) NOT NULL, `e_surname` VARCHAR(100)  NOT NULL, `category` VARCHAR(100) NOT NULL, PRIMARY KEY (`employee_id`));
+CREATE TABLE `storage`.`service` (`service_id` INT NOT NULL AUTO_INCREMENT,  `title` VARCHAR(100) NOT NULL UNIQUE, `price` INT NOT NULL, PRIMARY KEY (`service_id`));
+
+CREATE TABLE `storage`.`service_employee` (`service_id` INT NOT NULL , `employee_id` INT NOT NULL);
+
+alter table storage.service_employee add constraint fk_service_employee_link_service foreign key  (service_id) references storage.service (service_id);
+alter table storage.service_employee add constraint fk_service_employee_link_employee foreign key  (employee_id) references storage.employee (employee_id);
+
+
+INSERT INTO `storage`.`service`
+(`service_id`,
+`title`,`price`)
+VALUES
+(null,'face massage', 300);
+
+INSERT INTO `storage`.`employee`
+(`employee_id`,
+`e_name`,`e_surname`,`category`)
+VALUES
+(null,'Ola','Lokjh', 'middle');
+
+INSERT INTO `storage`.`service_employee`
+(`service_id`,
+`employee_id`)
+VALUES
+(1, 2);
+
+///employee and record
+
+CREATE TABLE `storage`.`record` (`record_id` INT NOT NULL AUTO_INCREMENT,  `date` DATETIME , `r_name` VARCHAR(100) NOT NULL, `r_surname` VARCHAR(100), `phone` VARCHAR(100) NOT NULL, PRIMARY KEY (`record_id`));
+
+CREATE TABLE `storage`.`record_employee` (`record_id` INT NOT NULL , `employee_id` INT NOT NULL);
+
+alter table storage.record_employee add constraint fk_record_employee_link_record foreign key  (record_id) references storage.record (record_id);
+alter table storage.record_employee add constraint fk_record_employee_link_employee foreign key  (employee_id) references storage.employee (employee_id);
+
+INSERT INTO `storage`.`record`
+(`record_id`,
+`date`,`r_name`,`r_surname`,`phone`)
+VALUES
+(null,curdate(),'Ivan','Lapunka', '+375256660077');
+
+
+INSERT INTO `storage`.`record_employee`
+(`record_id`,
+`employee_id`)
+VALUES
+(2, 1);
+
+//drop tables
+alter table storage.service_employee drop foreign key fk_service_employee_link_service;
+alter table storage.service_employee drop foreign key fk_service_employee_link_employee;
+
+
+alter table storage.record_employee drop foreign key  fk_record_employee_link_record;
+alter table storage.record_employee drop foreign key  fk_record_employee_link_employee; 
