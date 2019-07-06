@@ -17,7 +17,7 @@ public class ReportAppender extends AppenderSkeleton {
 	}
 
 	public void close() {
-
+		//ooooo
 		if (this.closed)
 			return;
 		this.closed = true;
